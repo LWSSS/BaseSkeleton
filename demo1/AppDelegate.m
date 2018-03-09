@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "NetWorkAsstaint.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIViewController * vc = [[ViewController alloc] init];
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    _window.rootViewController = nav;
+    [_window makeKeyWindow];
+    [_window makeKeyAndVisible];
+    
+    // 初始化网络工具类
+    [NetWorkAsstaint sharedAssistaint];
     return YES;
 }
 
