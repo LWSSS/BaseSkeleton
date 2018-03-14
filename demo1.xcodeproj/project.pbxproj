@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0155E0A820510CDA0073220C /* CheckVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0155E0A720510CDA0073220C /* CheckVersion.m */; };
+		016DA9292058C0AD00225B38 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 016DA9282058C0AD00225B38 /* BaseViewController.m */; };
+		0171BAC52057B18600A3DF3E /* BaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0171BAC42057B18600A3DF3E /* BaseTool.m */; };
 		0183D9AE204F7A8B00A1B971 /* NetWorkAsstaint.m in Sources */ = {isa = PBXBuildFile; fileRef = 0183D9AD204F7A8B00A1B971 /* NetWorkAsstaint.m */; };
 		0183D9B1204F8DCD00A1B971 /* MBProgressHUD+ZC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0183D9B0204F8DCD00A1B971 /* MBProgressHUD+ZC.m */; };
 		01E7C2A0204EA64500DFEF52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E7C29F204EA64500DFEF52 /* AppDelegate.m */; };
@@ -42,6 +44,10 @@
 		0155E0A5205106220073220C /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		0155E0A620510CDA0073220C /* CheckVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckVersion.h; sourceTree = "<group>"; };
 		0155E0A720510CDA0073220C /* CheckVersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckVersion.m; sourceTree = "<group>"; };
+		016DA9272058C0AD00225B38 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		016DA9282058C0AD00225B38 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		0171BAC32057B18600A3DF3E /* BaseTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTool.h; sourceTree = "<group>"; };
+		0171BAC42057B18600A3DF3E /* BaseTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTool.m; sourceTree = "<group>"; };
 		0183D9AC204F7A8B00A1B971 /* NetWorkAsstaint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetWorkAsstaint.h; sourceTree = "<group>"; };
 		0183D9AD204F7A8B00A1B971 /* NetWorkAsstaint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetWorkAsstaint.m; sourceTree = "<group>"; };
 		0183D9AF204F8DCD00A1B971 /* MBProgressHUD+ZC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+ZC.h"; sourceTree = "<group>"; };
@@ -102,6 +108,10 @@
 				0183D9AD204F7A8B00A1B971 /* NetWorkAsstaint.m */,
 				0155E0A620510CDA0073220C /* CheckVersion.h */,
 				0155E0A720510CDA0073220C /* CheckVersion.m */,
+				0171BAC32057B18600A3DF3E /* BaseTool.h */,
+				0171BAC42057B18600A3DF3E /* BaseTool.m */,
+				016DA9272058C0AD00225B38 /* BaseViewController.h */,
+				016DA9282058C0AD00225B38 /* BaseViewController.m */,
 			);
 			path = TOOL;
 			sourceTree = "<group>";
@@ -369,10 +379,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				01E7C2A3204EA64500DFEF52 /* ViewController.m in Sources */,
+				016DA9292058C0AD00225B38 /* BaseViewController.m in Sources */,
 				0183D9B1204F8DCD00A1B971 /* MBProgressHUD+ZC.m in Sources */,
 				0183D9AE204F7A8B00A1B971 /* NetWorkAsstaint.m in Sources */,
 				0155E0A820510CDA0073220C /* CheckVersion.m in Sources */,
 				01E7C2AE204EA64500DFEF52 /* main.m in Sources */,
+				0171BAC52057B18600A3DF3E /* BaseTool.m in Sources */,
 				01E7C2A0204EA64500DFEF52 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
