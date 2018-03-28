@@ -26,7 +26,7 @@
                                          failure:(void (^)(NSURLSessionDataTask *, NSError *))failure;
 @end
 
-@interface NetWorkAsstaint ()<NSURLSessionDelegate,NetWorkProxy>
+@interface NetWorkAsstaint ()<NSURLSessionDelegate,NetWorkProxy,NSURLSessionDelegate>
 
 @end
 
@@ -164,6 +164,60 @@
 }
 
 
+//配置原生的https
+#pragma mark NSURLSessionDelegate
+- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler{
+    
+    
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+    }
+    else if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodClientCertificate])
+    {
+        //客户端证书认证,https进行配置
+        NSString *path = [[NSBundle mainBundle]pathForResource:@"wangfu"ofType:@"cer"];
+        NSData *p12data = [NSData dataWithContentsOfFile:path];
+        CFDataRef inP12data = (__bridge CFDataRef)p12data;
+        SecIdentityRef myIdentity;
+        OSStatus status = [self extractIdentity:inP12data toIdentity:&myIdentity];
+        if (status != 0) {
+            return;
+        }
+        SecCertificateRef myCertificate;
+        SecIdentityCopyCertificate(myIdentity, &myCertificate);
+        const void *certs[] = { myCertificate };
+        CFArrayRef certsArray =CFArrayCreate(NULL, certs,1,NULL);
+        NSURLCredential *credential = [NSURLCredential credentialWithIdentity:myIdentity certificates:(__bridge NSArray*)certsArray persistence:NSURLCredentialPersistencePermanent];
+        completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+    }
+}
+
+-(OSStatus)extractIdentity:(CFDataRef)inP12Data toIdentity:(SecIdentityRef*)identity {
+    OSStatus securityError = errSecSuccess;
+    CFStringRef password = CFSTR("123456");
+    const void *keys[] = { kSecImportExportPassphrase };
+    const void *values[] = { password };
+    CFDictionaryRef options = CFDictionaryCreate(NULL, keys, values, 1, NULL, NULL);
+    CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);
+    securityError = SecPKCS12Import(inP12Data, options, &items);
+    if (securityError == 0)
+    {
+        CFDictionaryRef ident = CFArrayGetValueAtIndex(items,0);
+        const void *tempIdentity = NULL;
+        tempIdentity = CFDictionaryGetValue(ident, kSecImportItemIdentity);
+        *identity = (SecIdentityRef)tempIdentity;
+    }
+    else
+    {
+        NSLog(@"wangfu.cer error!");
+    }
+    
+    if (options) {
+        CFRelease(options);
+    }
+    return securityError;
+}
 
 
 

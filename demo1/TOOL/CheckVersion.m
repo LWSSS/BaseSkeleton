@@ -25,6 +25,7 @@
     return check;
 }
 
+
 -(void)isUpdateAPP:(NSString *)appid{
     NSURL * appUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",appid]];
     NSString * appMeg = [NSString stringWithContentsOfURL:appUrl encoding:NSUTF8StringEncoding error:nil];

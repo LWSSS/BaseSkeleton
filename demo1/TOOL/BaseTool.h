@@ -38,4 +38,7 @@ void  BaseMainRun(BaseRun run);
 -(NSString *)md5:(NSString *)input;
 //sha加密
 -(NSString *)sha1:(NSString *)input;
+
+//获取当前设备型号
+-(NSString *)getCurrentDeviceModel;
 @end
